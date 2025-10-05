@@ -8,55 +8,58 @@ It’s slow, but it’s guaranteed to cover all cases.
 
 You're not being clever — you're being complete.
 
-🧠 When to Use This Pattern
+🧠 When to Use This Pattern ---
 
 Use Linear Scan or Brute Force when:
 
-You are checking all values (for max, min, condition, etc.)
+--> You are checking all values (for max, min, condition, etc.)
+--> The array is unsorted / unstructured
+--> You are not told about:
+--> Sorted order
+--> Duplicates or uniqueness
+--> Constraints you can exploit
+--> You need to try all combinations or choices
+--> You are building your base logic before optimizing
 
-The array is unsorted / unstructured
+🧩 How It Works (Backed by Visual Algorithms + MIT Intuition) :
 
-You are not told about:
-
-Sorted order
-
-Duplicates or uniqueness
-
-Constraints you can exploit
-
-You need to try all combinations or choices
-
-You are building your base logic before optimizing
-
-🧩 How It Works (Backed by Visual Algorithms + MIT Intuition)
-Type	Loop(s)	Description
-Single Scan	1 loop	Check each element independently
-Nested Scan (pairs)	2 loops	For each i, check j > i — for pairs
-Triple Nested	3 loops	Used for checking triplets (e.g. triplet sum)
-Recursive Brute Force	Recursion	Try all paths (used in backtracking baseline)
+Type                            Loop(s)                    Description
+Single Scan	                    1 loop	                   Check each element independently
+Nested Scan (pairs)	            2 loops	                   For each i, check j > i — for pairs
+Triple Nested	                3 loops	                   Used for checking triplets (e.g. triplet sum)
+Recursive Brute Force	        Recursion	               Try all paths (used in backtracking baseline)
 
 💡 It checks everything manually and guarantees correctness at the cost of performance.
 
-📊 Visual Pattern
+📊 Visual Pattern :
+
 🔹 Single Scan
-    i →
+  i →
 [ 3, 8, 1, 9, 2 ]
 
 Action: Compare each to current max/min
 
 🔹 Nested Pair Scan
-    i →        j →
+i → j →
 [ 1, 2, 3, 4 ]
 
 (1,2), (1,3), (1,4)  
 (2,3), (2,4)  
 (3,4)
 
-⏱ Time & Space Complexity
-Case	Time	Space
-Single element scan	O(n)	O(1)
-Pair check (nested)	O(n²)	O(1)
-Triplet check	O(n³)	O(1)
-Recursive brute force	O(2ⁿ)	Stack
+⏱ Time & Space Complexity :
+
+Case	                        Time	            Space
+Single element scan	            O(n)	            O(1)
+Pair check (nested)	            O(n²)	            O(1)
+Triplet check	                O(n³)	            O(1)
+Recursive brute force	        O(2ⁿ)	            Stack
 
 🧠 Use when n is small (n ≤ 1000) or as a base to validate better logic
+
+⚠️ Pitfalls :
+
+❌ Slow for large input sizes
+❌ Not scalable (O(n²) → TLE on LeetCode)
+✅ Best to start with, especially for new problems
+✅ Helps you validate edge cases manually
