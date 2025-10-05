@@ -1,0 +1,37 @@
+🔸 Example 5: 3Sum Problem
+
+--> Key Idea: Fix one number and find two others whose sum makes total zero using two-pointer technique.
+
+Why Two Pointers?
+Sorted array enables finding complement pairs in O(n) within O(n) loop → O(n²) total.
+
+--> Approach:
+
+- Sort nums.
+- For each index k, use two pointers i = k+1 and j = n-1.
+- Move i or j based on the sum of nums[k] + nums[i] + nums[j].
+
+Visualisation
+
+      k
+[–4, –1, –1, 0, 1, 2]
+      i         j
+Try –1 + 1 + 2 = 2 > 0 → j--  
+Then –1 + 0 + 1 = 0 → record [–1, 0, 1]
+
+
+--> Pseudocode
+
+sort(nums)
+for k = 0 to n–3:
+  i = k + 1, j = n – 1
+  while i < j:
+    sum = nums[k] + nums[i] + nums[j]
+    if sum == 0:
+      store [nums[k], nums[i], nums[j]]
+      i++, j--
+      skip duplicates at i and j
+    else if sum < 0:
+      i++
+    else:
+      j--
