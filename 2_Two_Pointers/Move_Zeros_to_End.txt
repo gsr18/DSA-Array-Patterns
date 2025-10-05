@@ -1,0 +1,28 @@
+🔸 Example 3: Move Zeros to End
+
+--> Key Idea: Shift non-zero elements left in one pass, preserving order, then fill the rest with zeros.
+
+Why Two Pointers?
+One tracks the next position (i), the other scans for useful values (j).
+
+--> Approach:
+
+If arr[j] != 0, swap with arr[i], increment i
+
+--> Visualisation
+
+ i  j
+[0, 1, 0, 3, 12]
+swap → [1, 0, 0, 3, 12]
+         ↑     ↑
+...
+Final: [1, 3, 12, 0, 0]
+
+
+--> Pseudocode
+
+i = 0
+for j = 0 to n-1:
+    if arr[j] != 0:
+        swap(arr[i], arr[j])
+        i++
