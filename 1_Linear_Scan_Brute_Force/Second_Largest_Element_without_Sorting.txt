@@ -1,0 +1,19 @@
+2. Find Second Largest (No Sorting)
+
+🔑 Key Idea: Track two variables — first_max and second_max
+
+
+--> PseudoCode 
+
+first = second = -∞
+for num in arr:
+    if num > first:
+        second = first
+        first = num
+    else if num > second and num != first:
+        second = num
+
+
+Time: O(n)
+
+Space: O(1)
