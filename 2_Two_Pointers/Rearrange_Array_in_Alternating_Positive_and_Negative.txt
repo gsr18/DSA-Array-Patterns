@@ -1,0 +1,34 @@
+🔸 Example 7: Rearrange Array in Alternating Positive and Negative
+
+--> Key Idea: Partition negatives and positives, then interleave them in place.
+
+Why Two Pointers?
+First pass separates signs; second pass reassigns alternately in O(n).
+
+--> Approach:
+
+- Partition using two pointers: swap negatives to the front.
+- Start at pos_start = partition_index, neg_start = 0; swap alternately with step 2.
+
+--> Visualisation
+
+Original: [ -3, 2, -5, 6, -1, 4, -2 ]
+Partition → [ -3, -5, -1, -2 | 6, 4, 2 ]
+neg_start=0, pos_start=4:
+swap positions: produce alternating signs.
+
+
+--> Pseudocode
+
+// Partition negatives
+i = 0, j = n – 1
+while i <= j:
+  if arr[i] < 0: i++
+  else if arr[j] >= 0: j--
+  else swap(arr[i++], arr[j--])
+neg_start = 0, pos_start = i
+// Interleave
+while neg_start < pos_start and pos_start < n:
+  swap(arr[neg_start], arr[pos_start])
+  neg_start += 2
+  pos_start++
