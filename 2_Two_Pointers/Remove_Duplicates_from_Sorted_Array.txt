@@ -1,0 +1,30 @@
+🔸 Example 2: Remove Duplicates in Sorted Array
+
+--> Key Idea: Keep only one copy of each number by keeping a “write” pointer while scanning, minimizing overwrites.
+
+Why Two Pointers?
+One pointer for last unique (i), one for scanning (j).
+
+--> Approach:
+
+If arr[j] != arr[i], increment i, copy arr[j] → arr[i]
+Return i + 1 as new length
+
+--> Visualisation
+
+ i     j
+[1, 1, 2, 2, 3]
+     ↑
+Found 2 != 1
+Write at i+1:
+[1, 2, _, _, _]
+......
+
+--> Pseudocode
+
+i = 0
+for j = 1 to n-1:
+    if arr[j] != arr[i]:
+        i++
+        arr[i] = arr[j]
+return i + 1
