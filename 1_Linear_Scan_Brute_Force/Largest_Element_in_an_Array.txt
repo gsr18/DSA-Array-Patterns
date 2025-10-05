@@ -1,0 +1,15 @@
+1. Find the Largest Element
+
+🔑 Key Idea: Keep comparing & updating max
+
+--> PseudoCode
+
+max = arr[0]
+for i from 1 to n-1:
+    if arr[i] > max:
+        max = arr[i]
+
+
+Time: O(n)
+
+Space: O(1)
