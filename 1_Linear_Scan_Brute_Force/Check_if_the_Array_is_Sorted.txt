@@ -1,0 +1,16 @@
+3. Check if Array is Sorted
+
+🔑 Key Idea: Just compare each with its previous
+
+
+--> PseudoCode
+
+for i from 1 to n-1:
+    if arr[i] < arr[i-1]:
+        return false
+return true
+
+
+Time: O(n)
+
+Space: O(1)
