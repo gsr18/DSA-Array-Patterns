@@ -1,0 +1,29 @@
+🔸 Example 1: Reverse an Array
+
+--> Key Idea: Swap the elements at both ends at the same time to reverse the array in-place.
+
+Why Two Pointers?
+One pointer starts from left, one from right → Swap & move inwards.
+
+Approach:
+
+i = 0, j = n - 1
+While i < j, swap arr[i] & arr[j]; increment i, decrement j
+
+--> Visualisation
+
+ i →       <-j
+[1, 2, 3, 4, 5]
+ ↓           ↓
+swap(1,5)
+[5, 2, 3, 4, 1]
+    ↑     ↑
+continue...
+
+
+--> Pseudocode
+
+i = 0, j = n-1
+while i < j:
+    swap(arr[i], arr[j])
+    i++, j--
