@@ -1,0 +1,35 @@
+🔸 Example 6: Find the Union (Two Sorted Arrays)
+
+--> Key Idea: Traverse both sorted arrays with two pointers to collect unique elements in one pass.
+
+Why Two Pointers?
+Efficient merging skipping duplicates without extra space.
+
+--> Approach:
+
+- Initialize i = 0, j = 0.
+- Compare arr1[i] and arr2[j], add the smaller and increment pointer; if equal, add once and advance both, skipping duplicates.
+- Append remaining unique elements.
+
+--> Visualisation
+
+arr1: [1, 2, 4, 4, 7]
+       i         ↓  
+arr2: [2, 4, 6, 8]
+           j         
+Compare 1<2→add1; 2=2→add2; skip dup; 4=4→add4; ...
+
+
+--> Pseudocode
+
+i = 0, j = 0
+while i < n and j < m:
+  if arr1[i] < arr2[j]:
+    add arr1[i++]
+  else if arr1[i] > arr2[j]:
+    add arr2[j++]
+  else:
+    add arr1[i]
+    skip duplicates in both
+while i < n: add unique arr1[i++]
+while j < m: add unique arr2[j++]
