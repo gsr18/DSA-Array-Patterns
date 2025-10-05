@@ -1,0 +1,17 @@
+5. Find Pair with Given Sum (Brute)
+
+🔑 Key Idea: Try every pair of elements
+
+
+--> PseudoCode
+
+for i = 0 to n-1:
+    for j = i+1 to n-1:
+        if arr[i] + arr[j] == target:
+            return true
+return false
+
+
+Time: O(n²)
+
+Space: O(1)
