@@ -1,0 +1,29 @@
+🔸 Example 4: Two Sum (Sorted Array)
+
+--> Key Idea: Use a left and right pointer to home in on the target sum, adjusting based on whether current sum is too large or too small.
+
+Why Two Pointers?
+Sorted array lets us adjust based on sum comparison.
+
+--> Approach:
+
+i = 0, j = n-1
+If arr[i] + arr[j] > target, decrement j; if less, increment i
+
+--> Visualisation
+
+ i →       <- j
+[1, 2, 4, 7, 11]
+ 1+11=12 > target → j--
+...
+Found 4+7=11
+
+
+--> Pseudocode
+
+i = 0, j = n-1
+while i < j:
+    sum = arr[i] + arr[j]
+    if sum == target: return [i, j]
+    if sum < target: i++
+    else: j--
