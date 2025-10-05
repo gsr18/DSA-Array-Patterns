@@ -1,0 +1,57 @@
+💡 Core Idea (Analogy) : 
+
+-- Like two people walking on a straight road:
+-- One from the start, one from the end
+-- They adjust based on what they see
+-- Or one walks ahead while the other fixes problems behind
+
+👉 Two pointers help eliminate unnecessary work by narrowing down from both sides or handling two roles simultaneously.
+
+🎯 When to Use (How to Recognize It) :
+
+--> The array is sorted.
+--> The problem involves pairs, partitions, merging, in-place editing.
+--> The brute force seems like a nested loop — can we do it in O(n)?
+
+Typical keywords:
+🔹 “Find a pair”
+🔹 “Remove duplicates”
+🔹 “Rearrange”
+🔹 “Move elements”
+🔹 “Merge sorted arrays”
+
+🔧 3. General Strategy (How to Use It) : 
+
+Type 1: Start & End
+--> PseudoCode : 
+i = 0, j = n-1
+while (i < j):
+    if condition_met:
+        do something
+        i++, j-- // or only one of them
+
+Type 2: One Fixes, One Scans
+--> PseudoCode :
+i = 0
+for j in 0 to n-1:
+    if condition on arr[j]:
+        swap arr[i], arr[j]
+        i++
+
+🔎 4. How It Works (Step-by-step) :
+
+--> Initialize pointers based on direction needed.
+--> Move them towards each other or let one scan while the other works.
+--> Use their positions to compare, collect, or modify data.
+--> Often enables O(n) solutions where brute force is O(n²).
+
+⚠️ Pitfalls : 
+
+❌ Only use when input is or can be sorted
+❌ Don’t forget pointer moves → infinite loops
+❌ Handle merges and writing carefully to avoid overwriting
+⚠️ Watch boundaries (i < j, loops end conditions)
+
+🧾 Final Trigger (Write in BIG for your notes) : 
+
+“When two positions need to collaborate — start-end, scan-write, dual search — use Two Pointers for O(n) elegance.”
