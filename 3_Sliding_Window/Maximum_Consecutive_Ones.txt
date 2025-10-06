@@ -1,0 +1,22 @@
+🔸 Example 1: Maximum Consecutive Ones
+
+--> Key Idea: Count longest stretch of 1s using a window that resets on 0
+
+Why Sliding Window?
+We're finding the longest substring of 1s—strictly forward movement
+
+--> Approach:
+Expand end, reset start on 0, track max length
+
+--> Visualisation
+
+[1,1,0,1,1,1,0,1]
+ ---- length=2, reset → then length=3 ...
+
+
+--> Pseudocode
+
+start = 0, maxLen = 0
+for end = 0 to n-1:
+  if arr[end] == 0: start = end + 1
+  maxLen = max(maxLen, end - start + 1)
