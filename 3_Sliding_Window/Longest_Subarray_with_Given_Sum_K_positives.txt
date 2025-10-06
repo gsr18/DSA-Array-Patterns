@@ -1,0 +1,25 @@
+🔸 Example 2: Longest Subarray with Given Sum K (positives)
+
+--> Key Idea: Classical sliding window sum equals K
+
+Why Sliding Window?
+All positives → window sum monotonically increases with end, decreases with start
+
+--> Approach:
+Expand end, track sum, shrink start while sum > K, check sum == K
+
+--> Visualisation
+
+[2,1,3,2,4], K=7
+ [2,1,3,2]=8 → shrink → [1,3,2]=6 expand → [1,3,2,4]=10 → shrink...
+
+
+--> Pseudocode
+
+start = 0, current = 0, maxLen = 0
+for end = 0 to n-1:
+  current += arr[end]
+  while current > K:
+    current -= arr[start++]
+  if current == K:
+    maxLen = max(maxLen, end - start + 1)
