@@ -1,0 +1,26 @@
+🔸 Example 1: Longest Subarray with Sum K (positives + negatives)
+
+--> Key Idea: Keep prefix sum and check if prefix - K occurred before
+
+Why Prefix + HashMap?
+Since negatives are involved, window size isn’t monotonic → sliding window fails
+
+--> Approach:
+Maintain prefix sum and store in map
+
+--> Visualisation
+
+arr = [1, 2, 3, -2, 5], K = 6
+PrefixSum at i=4 = 9 → 9 - 6 = 3 → map[3] = 1 ⇒ subarray [2..4]
+
+
+--> Pseudocode
+
+map = {0: -1}
+prefix = 0, maxLen = 0
+for i = 0 to n-1:
+  prefix += arr[i]
+  if prefix - K in map:
+    maxLen = max(maxLen, i - map[prefix - K])
+  if prefix not in map:
+    map[prefix] = i
