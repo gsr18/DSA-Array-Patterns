@@ -1,0 +1,25 @@
+🔸 Merge Overlapping Intervals
+
+--> Key Idea: Combine any overlapping time ranges
+
+Why?
+Sorting by start time makes greedy merging easy
+
+--> Approach:
+Sort by start, then merge if current.start <= last.end
+
+--> Visualisation
+
+[1,3],[2,6] overlap → becomes [1,6]
+[8,10],[9,12] overlap → [8,12]
+
+
+--> Pseudocode
+
+sort intervals by start
+res.push(intervals[0])
+for each interval:
+  if interval.start<=res.back().end:
+    res.back().end=max(res.back().end, interval.end)
+  else:
+    res.push(interval)
