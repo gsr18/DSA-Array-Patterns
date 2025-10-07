@@ -1,0 +1,38 @@
+💡 Core Idea (Analogy)
+
+Imagine walking on a path and keeping a diary of total steps taken so far (prefix sum). At every step, you check:
+“Have I walked this exact number of extra steps before?”
+If yes, the subpath between those two points has a special property.
+
+🎯 When to Use (How to Recognize It)
+
+--> When the problem talks about subarray sum (especially with negatives or zeros involved)
+--> You need to count or find the longest subarray satisfying some condition (e.g. sum = K, XOR = K)
+--> Brute force is O(n²), this pattern reduces it to O(n) using HashMap to remember prefixes
+
+🔧 General Strategy
+1. Keep a running prefix (sum or XOR)
+2. Use a HashMap to store {prefix: first index}
+3. At each step, check if (prefix - target) exists → subarray found!
+4. If prefix already seen, update result
+
+🔎 How It Works (Step-by-step)
+
+--> Calculate a running prefix sum
+--> Store the first index where each prefix value occurred
+--> At each index i, check if (currentPrefix - K) exists
+--> If yes → subarray from map[currentPrefix - K] + 1 to i has sum K
+--> Keep track of max length, count, etc., as needed
+
+📊 Visual Representation
+
+Let’s say we have:
+
+A = [1, 2, 3, -2, 5], K = 5
+Prefix Sum = [1, 3, 6, 4, 9]
+Check if prefix - K (e.g., 6 - 5 = 1) existed before.
+If yes → subarray found!
+
+🔚 Final Trigger:
+
+"When you need to count or find subarrays with specific sum or XOR, and negatives exist — use the powerful combo: Prefix + HashMap.”
