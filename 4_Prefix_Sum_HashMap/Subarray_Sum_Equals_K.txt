@@ -1,0 +1,24 @@
+🔸 Example 2: Subarray Sum Equals K
+
+--> Key Idea: Count total subarrays with sum K using prefix sum frequency
+
+Why Prefix + HashMap?
+Counting how often prefix - K appeared before
+
+--> Approach:
+Count frequency of each prefix sum
+
+--> Visualisation
+
+Prefix = 9, K = 5 → 9 - 5 = 4 → how many times has prefix 4 appeared before?
+
+
+--> Pseudocode
+
+map = {0: 1}
+prefix = 0, count = 0
+for num in arr:
+  prefix += num
+  if prefix - K in map:
+    count += map[prefix - K]
+  map[prefix] += 1
