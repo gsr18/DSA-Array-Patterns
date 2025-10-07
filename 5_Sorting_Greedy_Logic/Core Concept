@@ -1,0 +1,46 @@
+💡 Core Idea (Analogy)
+
+Like sorting your books by height before arranging them so tallest are visible—that sorting sets a clear order, then your greedy logic picks the best next move.
+
+We sort items to impose a meaningful order, making it easy to make local optimal choices (greedy decisions) in one linear sweep.
+
+🎯 When to Use (How to Recognize It)
+
+--> You need to reorder items and pick the best ones under constraints.
+--> Keywords: sort 0s,1s,2s; merge intervals; next permutation; leaders; longest consecutive.
+--> Brute force is messy—sorting first organizes data, then a simple pass suffices.
+
+🔧 3. General Strategy
+1. SORT the array/items by key (e.g., value, color, boundary)
+2. Apply a single pass with GREEDY decisions:
+   - Partition, merge, swap, collect as needed
+
+
+Sorting lets us rely on a consistent structure, and greedy logic helps us extract the optimal solution efficiently in a single pass.
+
+🔎 4. How It Works (Step‑by‑step)
+
+--> Sort key attribute(s): value, color, interval start, permutation order.
+--> Make a single pass in that order:
+--> For Dutch Flag: partition 0s/1s/2s
+--> For Intervals: merge overlapping segments
+--> For Next Permutation: perform specific in-place rearrangement
+--> For leaders/consecutive sequence: identify based on sorted context
+--> Each greedy decision is local, but sorting ensures those decisions combine into a global optimum or correct structure.
+
+📊 Visual Patterns
+[0s | 1s | 2s]         Dutch flag pointers
+###########
+[ (start,end), ... ]   Merge if overlapping
+###########
+1 2 3 5 4              Next perm: swap and reverse
+
+⚠️ Pitfalls
+
+❌ Sort keys must be chosen correctly (value, start, ratio…)
+❌ After greedy decision, watch for off-by-one or edge cases
+⚠️ In-place merges require careful index management
+
+🧾 Final Trigger
+
+“If rearrangement or optimal selection is allowed, sort first, then apply greedy logic for a single efficient scan.”
