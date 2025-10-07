@@ -1,0 +1,23 @@
+🔸 Example 4: Count Subarrays with Given XOR K
+
+--> Key Idea: Like prefix sum, XOR prefix - check for (prefix ^ K)
+
+Why Prefix + HashMap?
+XOR trick: A ^ B = C → then A = B ^ C
+
+--> Approach:
+Count how many times prefix XOR K occurred
+
+--> Visualisation
+
+Prefix XOR = 5, K = 3 → 5 ^ 3 = 6 → how many times has 6 occurred as prefix XOR?
+
+
+--> Pseudocode
+
+map = {0: 1}
+prefix = 0, count = 0
+for num in arr:
+  prefix ^= num
+  count += map.get(prefix ^ K, 0)
+  map[prefix] += 1
