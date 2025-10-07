@@ -1,0 +1,28 @@
+🔸 Example 3: Largest Subarray with 0 Sum
+
+--> Key Idea: If same prefix sum appears again → subarray in between sums to 0
+
+Why Prefix + HashMap?
+Detect repetition of prefix → must have zero sum between them
+
+--> Approach:
+Store index of first time a prefix appears
+
+--> Visualisation
+
+arr = [1, -1, 3, 2, -2, -3]
+Prefix = 0 at index 1 and 5 → subarray [2..5] = sum 0
+
+
+--> Pseudocode
+
+map = {}
+prefix = 0, maxLen = 0
+for i = 0 to n-1:
+  prefix += arr[i]
+  if prefix == 0:
+    maxLen = i + 1
+  if prefix in map:
+    maxLen = max(maxLen, i - map[prefix])
+  else:
+    map[prefix] = i
