@@ -1,0 +1,5 @@
+Example 5: Count Subarrays with Given Sum
+
+Key Idea: Use prefix sum to count all subarrays with sum == target
+
+Same as Example 2, but usually in a counting question
