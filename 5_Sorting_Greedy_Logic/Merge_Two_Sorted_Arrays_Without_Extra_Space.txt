@@ -22,3 +22,121 @@ while i>=0 and j>=0:
   if A[i]>B[j]: A[k--]=A[i--]
   else: A[k--]=B[j--]
 while j>=0: A[k--]=B[j--]
+
+
+🧠 GAP METHOD (a.k.a. Merge Two Sorted Arrays Without Extra Space)
+🔹 Problem Context
+
+You’re given two sorted arrays, A[] and B[].
+You need to merge them into sorted order, but:
+
+❌ You cannot use extra space (no third array, no copying all into one).
+✅ You must do it in-place, maintaining sorted order across both arrays.
+
+💡 The Core Idea (Analogy)
+
+Imagine both arrays A and B as one long “virtual array” placed end to end:
+
+A: [1, 4, 7, 8, 10]
+B: [2, 3, 9]
+Virtual Array: [1, 4, 7, 8, 10, 2, 3, 9]
+
+
+Now, instead of comparing every element (which would take O(n²) if we swapped directly),
+we take a “gap” — like a ruler — and compare elements that are that far apart.
+
+Each pass with a smaller gap pulls elements closer to their right position —
+just like Shell Sort, where you first roughly order elements and then refine the order.
+
+⚙️ Step-by-Step Approach
+1. Compute total length
+len = n + m
+
+2. Initialize the gap
+gap = ceil(len / 2)
+
+
+Use the helper:
+
+int nextGap(int gap) {
+    if (gap <= 1) return 0;
+    return (gap + 1) / 2; // ceiling of gap/2
+}
+
+3. Compare elements gap apart
+
+Loop through i and j = i + gap:
+-- If both i and j are in array A, compare A[i] and A[j].
+-- If i in A and j in B, compare A[i] and B[j - n].
+-- If both in B, compare B[i - n] and B[j - n].
+-- If any pair is out of order, swap them.
+
+4. Reduce the gap
+
+After one pass, shrink the gap:
+
+gap = nextGap(gap);
+
+
+Repeat until gap = 0.
+
+🔸 Dry Run Example
+
+A = [1, 4, 7, 8, 10]
+B = [2, 3, 9]
+
+Total length = 8 → initial gap = 4
+
+Pass 1 (gap = 4):
+
+Compare A[0] and A[4] → 1,10 ✅
+Compare A[1] and B[0] → 4,2 ❌ → swap → A=[1,2,7,8,10], B=[4,3,9]
+Compare A[2] and B[1] → 7,3 ❌ → swap → A=[1,2,3,8,10], B=[4,7,9]
+Compare A[3] and B[2] → 8,9 ✅
+
+
+Pass 2 (gap = 2):
+Keep comparing and swapping;
+elements get closer to final sorted positions.
+
+After last pass (gap = 1):
+
+A = [1,2,3,4,7]
+B = [8,9,10]
+
+⏱️ Time & Space Complexity
+
+Time: O((n + m) * log(n + m))
+(log factor from reducing the gap each pass)
+
+Space: O(1) — in-place, no extra arrays.
+
+🧩 When to Use the Gap Method
+
+Use this when:
+-- Both arrays are already sorted.
+-- You cannot use extra space (e.g. interview constraint, embedded systems).
+-- You need a clean, deterministic O((n+m) log(n+m)) solution.
+-- Don’t use this when:
+-- Arrays are unsorted — sort them first or use merge sort directly.
+-- You’re allowed to use extra space — then the normal merge is simpler and faster.
+
+🎯 Intuitive Analogy
+
+-- Think of sorting books on two shelves (A and B) arranged left to right:
+-- The books are roughly sorted but split between shelves.
+-- You take a measuring stick (gap) to check books that are that far apart.
+-- If a book on the left shelf belongs after one on the right, you swap them.
+
+Each time, you use a smaller stick (smaller gap) to refine the order,
+until finally every book is in exact increasing order across both shelves.
+
+🧩 Quick Recap Formula Sheet
+Step	                                         Formula / Concept	                  Explanation
+Initial Gap	                                (n + m + 1) / 2	                  Ceiling division
+Next Gap	                                         (gap + 1) / 2	                  Halves the gap
+Compare Logic	                                Compare (i, i+gap)                      Across both arrays virtually
+Stop When	                                gap == 0	                           Fully sorted
+
+Space	                                         O(1)	                           In-place
+Time	                                         O((n+m) log(n+m))	                  Efficient for in-place merging
