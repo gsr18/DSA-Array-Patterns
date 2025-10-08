@@ -1,0 +1,24 @@
+🔸 Merge Two Sorted Arrays Without Extra Space
+
+--> Key Idea: Merge in-place by comparing end values
+
+Why?
+Sorted arrays → you can fill the end of the merged result
+
+--> Approach:
+Compare from the end of both, place the larger at end1+end2
+
+--> Visualisation
+
+A=[1,3,5,_,_,_], B=[2,4,6]
+         i     j    k
+Fill from end to start
+
+
+--> Pseudocode
+
+i=m-1, j=n-1, k=m+n-1
+while i>=0 and j>=0:
+  if A[i]>B[j]: A[k--]=A[i--]
+  else: A[k--]=B[j--]
+while j>=0: A[k--]=B[j--]
