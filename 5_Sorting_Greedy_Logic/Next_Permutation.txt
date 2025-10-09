@@ -1,0 +1,25 @@
+🔸 Next Permutation
+
+--> Key Idea: Find next lexicographically larger arrangement
+
+Why?
+Sort suffix and swap greedily to adjust order
+
+--> Approach:
+From right, find first arr[i]<arr[i+1]. Swap with just-larger element on right. Reverse suffix.
+
+--> Visualisation
+
+[1,2,3,6,5,4]
+    i=2
+swap 3 with 4 → [1,2,4,6,5,3]
+reverse suffix → [1,2,4,3,5,6]
+
+
+--> Pseudocode
+
+i=n−2 while i>=0 and arr[i]>=arr[i+1]: i--
+if i>=0:
+  j=n−1 while arr[j]<=arr[i]: j--
+  swap(arr[i],arr[j])
+reverse(arr.begin()+i+1, arr.end())
