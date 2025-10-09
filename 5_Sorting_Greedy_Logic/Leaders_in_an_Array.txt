@@ -1,0 +1,27 @@
+🔸 Leaders in an Array
+
+--> Key Idea: An element greater than all to its right gets printed
+
+Why?
+Greedy scan from right, track max
+
+--> Approach:
+Traverse from right → if arr[i] > maxRight, record it
+
+--> Visualisation
+
+[16,17,4,3,5,2]
+          ↑
+2 → max=2 → keep
+    5>2 → keep / update
+    3<5 → skip
+    ...
+
+
+--> Pseudocode
+
+maxFromRight = -∞
+for i=n-1 down to 0:
+  if arr[i] > maxFromRight:
+    print arr[i]
+    maxFromRight = arr[i]
